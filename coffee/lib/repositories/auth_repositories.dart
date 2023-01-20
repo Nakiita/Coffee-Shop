@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffee/models/user_model.dart';
-import 'package:coffee/services/firebase_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../models/user_model.dart';
+import '../services/firebase_service.dart';
 
 class AuthRepositories {
   CollectionReference<UserModel> ref =
