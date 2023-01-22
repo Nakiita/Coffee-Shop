@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/screens/dashboard.dart';
 import 'package:movie_info_app/screens/login.dart';
 import 'package:movie_info_app/screens/register.dart';
 import 'package:movie_info_app/screens/welcomescreen.dart';
@@ -31,11 +32,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/welcomescreen",
+      initialRoute: "/dashboard",
       routes: {
         "/login": (BuildContext context) => LoginScreen(),
         "/register": (BuildContext context) => RegisterWidget(),
         "/welcomescreen": (BuildContext context) => WelcomeScreen(),
+        "/dashboard": (BuildContext context) => HomePage(),
       },
     );
   }
