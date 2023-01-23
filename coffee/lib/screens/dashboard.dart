@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../widgets/items_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -9,7 +11,30 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   PageController pageController = PageController();
   int selectedIndex = 0;
   _onPageChanged(int index) {
@@ -131,6 +156,31 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                      ),
+                      TabBar(
+                          controller: _tabController,
+                          labelColor: Colors.orange,
+                          unselectedLabelColor: Colors.black,
+                          isScrollable: true,
+                          indicator: UnderlineTabIndicator(
+                            borderSide: BorderSide(
+                                width: 3, color: Colors.orangeAccent),
+                          ),
+                          tabs: [
+                            Tab(text: "Hot Coffee"),
+                            Tab(text: "Cold Coffee"),
+                            Tab(text: "Expresso"),
+                            Tab(text: "Cappuccino"),
+                            Tab(text: "Latte"),
+                          ]),
+                      Center(
+                        child: [
+                          ItemsWidget(),
+                          ItemsWidget(),
+                          ItemsWidget(),
+                          ItemsWidget(),
+                          ItemsWidget(),
+                        ][_tabController.index],
                       ),
                     ]),
               ),
