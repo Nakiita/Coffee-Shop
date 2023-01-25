@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
               email: email.text, password: password.text))
           .user;
       if (user != null) {
-        Navigator.of(context).pushReplacementNamed("/login");
+        Navigator.of(context).pushReplacementNamed("/dashboard");
       }
       if (user != null) {
         print("Login Success");

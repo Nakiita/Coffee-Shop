@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/screens/dashboard.dart';
-import 'package:movie_info_app/screens/login.dart';
-import 'package:movie_info_app/screens/register.dart';
-import 'package:movie_info_app/screens/welcomescreen.dart';
+import 'package:coffee_shop/screens/dashboard.dart';
+import 'package:coffee_shop/screens/login.dart';
+import 'package:coffee_shop/screens/register.dart';
+import 'package:coffee_shop/screens/welcomescreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/dashboard",
+      initialRoute: "/welcomescreen",
       routes: {
         "/login": (BuildContext context) => LoginScreen(),
         "/register": (BuildContext context) => RegisterWidget(),
