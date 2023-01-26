@@ -123,6 +123,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 150,
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/forgotPassword");
+                        },
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 Row(
                   children: <Widget>[
                     const Text("Does not have account?"),
