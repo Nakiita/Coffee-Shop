@@ -1,4 +1,5 @@
 import 'package:coffee_shop/screens/forgotPassword.dart';
+import 'package:coffee_shop/services/notification_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_shop/screens/dashboard.dart';
@@ -9,6 +10,9 @@ import 'package:coffee_shop/screens/welcomescreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+    NotificationService.initialize();
+
   runApp(const MyApp());
 }
 

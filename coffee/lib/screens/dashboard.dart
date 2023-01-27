@@ -1,3 +1,4 @@
+import 'package:coffee_shop/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -112,11 +113,27 @@ class _HomePageState extends State<HomePage>
                     onTap: () {
                       Navigator.of(context).pushNamed("/notification");
                     },
-                    child: Icon(
-                      Icons.notifications_active,
-                      color: Colors.black,
-                      size: 35,
-                    ),
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.notifications_active,
+                        ),
+                        onPressed: () {
+                          NotificationService.display(
+                              "Welcome!!",
+                              "Best Coffee Offer till the date",
+                              "Order Yours",
+                              context);
+                          Positioned(
+                            top: 12,
+                            right: 12,
+                            child: Container(
+                              height: 10,
+                              width: 10,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                          );
+                        }),
                   ),
                 ],
               ),
