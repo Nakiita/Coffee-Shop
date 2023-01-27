@@ -1,3 +1,4 @@
+import 'package:coffee_shop/screens/order_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -80,7 +81,11 @@ class DetailsPage extends StatelessWidget {
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.orange),
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/orderdetails");
+                    Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DeliveryTime(),
+                                ));
                   },
                   child: Text(
                     "Buy Now",

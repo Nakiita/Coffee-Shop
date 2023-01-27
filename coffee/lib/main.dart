@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-    NotificationService.initialize();
+  NotificationService.initialize();
 
   runApp(const MyApp());
 }
@@ -45,9 +45,7 @@ class MyApp extends StatelessWidget {
         "/register": (BuildContext context) => RegisterWidget(),
         "/welcomescreen": (BuildContext context) => WelcomeScreen(),
         "/dashboard": (BuildContext context) => HomePage(),
-        
         "/forgotPassword": (BuildContext context) => ForgotPassword(),
-        "/orderdetails": (BuildContext context) => DeliveryTime(),
       },
     );
   }

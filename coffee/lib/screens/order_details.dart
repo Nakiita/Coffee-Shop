@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coffee_shop/screens/dashboard.dart';
 import 'package:coffee_shop/screens/detailscreen.dart';
+import 'package:coffee_shop/services/notification_service.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Color.fromARGB(255, 235, 197, 197),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ));
+          },
           icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Color.fromARGB(255, 235, 197, 197),
@@ -102,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 locale: Locale('en', 'US'),
               ),
               SizedBox(
-                height: 50,
+                height: 100,
               ),
               Text(
                 "Delivery Address",
@@ -123,29 +131,56 @@ class _MyHomePageState extends State<MyHomePage> {
                       hintText: "Enter Your Delivery Address",
                     ),
                   )),
-              SizedBox(height: 50),
+              SizedBox(height: 100),
               Text(
                 "Payment Method",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange),
-                      onPressed: () {},
-                      child: Text("Cash On Delivery")),
-                ],
-              ),
+              Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    ' - Cash On Delivery',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  )),
               SizedBox(height: 200),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/dashboard");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ));
                 },
                 child: Text('Order Now'),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/notification");
+                },
+                child: IconButton(
+                    icon: Icon(
+                      Icons.delivery_dining,
+                    ),
+                    onPressed: () {
+                      NotificationService.display(
+                          "Order Acknowledgement",
+                          "Your Order is acknowledge, we will contact you soon",
+                          "Your order",
+                          context);
+                      Positioned(
+                        top: 12,
+                        right: 12,
+                        child: Container(
+                          height: 10,
+                          width: 10,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                      );
+                    }),
               ),
             ],
           ),
