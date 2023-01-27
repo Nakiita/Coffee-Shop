@@ -1,4 +1,6 @@
+import 'package:coffee_shop/screens/detailscreen.dart';
 import 'package:coffee_shop/screens/forgotPassword.dart';
+import 'package:coffee_shop/screens/order_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_shop/screens/dashboard.dart';
@@ -39,7 +41,9 @@ class MyApp extends StatelessWidget {
         "/register": (BuildContext context) => RegisterWidget(),
         "/welcomescreen": (BuildContext context) => WelcomeScreen(),
         "/dashboard": (BuildContext context) => HomePage(),
+        
         "/forgotPassword": (BuildContext context) => ForgotPassword(),
+        "/orderdetails": (BuildContext context) => DeliveryTime(),
       },
     );
   }

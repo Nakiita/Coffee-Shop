@@ -159,26 +159,19 @@ class _HomePageState extends State<HomePage>
                       ),
                       TabBar(
                           controller: _tabController,
-                          labelColor: Colors.orange,
-                          unselectedLabelColor: Colors.black,
+                          labelColor: Colors.black,
                           isScrollable: true,
                           indicator: UnderlineTabIndicator(
-                            borderSide: BorderSide(
-                                width: 3, color: Colors.orangeAccent),
+                            borderSide:
+                                BorderSide(width: 7, color: Colors.black),
                           ),
                           tabs: [
-                            Tab(text: "Hot Coffee"),
-                            Tab(text: "Cold Coffee"),
-                            Tab(text: "Expresso"),
-                            Tab(text: "Cappuccino"),
-                            Tab(text: "Latte"),
+                            Tab(
+                              text: "Coffee",
+                            ),
                           ]),
                       Center(
                         child: [
-                          ItemsWidget(),
-                          ItemsWidget(),
-                          ItemsWidget(),
-                          ItemsWidget(),
                           ItemsWidget(),
                         ][_tabController.index],
                       ),

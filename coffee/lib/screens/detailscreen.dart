@@ -73,61 +73,15 @@ class DetailsPage extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              SizedBox(height: 100),
-              RawMaterialButton(
-                onPressed: () {
-                  if (_quantity > 0) {
-                    _quantity--;
-                  }
-                },
-                constraints:
-                    BoxConstraints().tighten(height: 30.0, width: 30.0),
-                elevation: 7.0,
-                child: Icon(
-                  Icons.remove,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                fillColor: Colors.white24,
-              ),
-              SizedBox(
-                width: 20.0,
-              ),
-              RawMaterialButton(
-                onPressed: () {
-                  if (_quantity < 10) {
-                    _quantity++;
-                  }
-                },
-                constraints:
-                    BoxConstraints().tighten(height: 30.0, width: 30.0),
-                elevation: 7.0,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                fillColor: Colors.white24,
-              ),
-              ElevatedButton(
-                child: Text(
-                  "Add to cart",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1),
-                ),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                onPressed: () {},
-              ),
               SizedBox(
                 width: 30,
               ),
               ElevatedButton(
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/orderdetails");
+                  },
                   child: Text(
                     "Buy Now",
                     style: TextStyle(
