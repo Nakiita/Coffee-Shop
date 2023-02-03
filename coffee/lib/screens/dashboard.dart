@@ -1,9 +1,7 @@
+import 'package:coffee_shop/screens/option.dart';
 import 'package:coffee_shop/services/notification_service.dart';
+import 'package:coffee_shop/widgets/items_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
-import '../widgets/items_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,25 +65,18 @@ class _HomePageState extends State<HomePage>
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.black,
+              icon: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) => Option(),
+                  ));
+                },
+                child: Icon(
+                  Icons.filter_list,
+                  color: Colors.black,
+                ),
               ),
-              label: "Favorite",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.black,
-              ),
-              label: "Cart",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              label: "Profile",
+              label: "More",
             ),
           ],
           backgroundColor: Color.fromARGB(255, 235, 197, 197),
@@ -99,16 +90,6 @@ class _HomePageState extends State<HomePage>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed("/more");
-                    },
-                    child: Icon(
-                      Icons.filter_list,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                  ),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).pushNamed("/notification");
@@ -166,10 +147,13 @@ class _HomePageState extends State<HomePage>
                           decoration: InputDecoration(
                             hintText: "Find Your Coffee",
                             hintStyle: TextStyle(color: Colors.black),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              size: 30,
-                              color: Colors.black,
+                            prefixIcon: GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.search,
+                                size: 30,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:coffee_shop/screens/detailscreen.dart';
 import 'package:coffee_shop/screens/forgotPassword.dart';
+
 import 'package:coffee_shop/services/notification_service.dart';
 import 'package:coffee_shop/screens/order_details.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +16,7 @@ void main() async {
 
   NotificationService.initialize();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         "/welcomescreen": (BuildContext context) => WelcomeScreen(),
         "/dashboard": (BuildContext context) => HomePage(),
         "/forgotPassword": (BuildContext context) => ForgotPassword(),
+        
       },
     );
   }
