@@ -52,6 +52,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/login");
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
+          backgroundColor: Color.fromARGB(255, 235, 197, 197),
+          title: Text(
+            "Forgot Password",
+            style: TextStyle(color: Colors.black),
+          ),
+          elevation: 0,
+        ),
         backgroundColor: Color.fromARGB(255, 235, 197, 197),
         body: SingleChildScrollView(
           child: Form(

@@ -12,6 +12,7 @@ class DeliveryTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter DateTimePicker Demo',
       home: MyHomePage(),
       localizationsDelegates: [
@@ -86,104 +87,95 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Form(
           key: _oFormKey,
-          child: Column(
-            children: <Widget>[
-              DateTimePicker(
-                type: DateTimePickerType.date,
-                dateMask: 'yyyy/MM/dd',
-                controller: _dateController,
-                //initialValue: _initialValue,
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2100),
-                icon: Icon(Icons.event),
-                dateLabelText: 'Date',
-                locale: Locale('en', 'US'),
-              ),
-              DateTimePicker(
-                type: DateTimePickerType.time,
-                //timePickerEntryModeInput: true,
-                controller: _timeController,
-                // initialValue: '', //_initialValue,
-                icon: Icon(Icons.access_time),
-                timeLabelText: "Time",
-                use24HourFormat: false,
-                locale: Locale('en', 'US'),
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              Text(
-                "Delivery Address",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                  margin: EdgeInsets.all(10),
-                  child: TextFormField(
-                    controller: address,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return "Address is required";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.place),
-                      border: OutlineInputBorder(),
-                      hintText: "Enter Your Delivery Address",
-                    ),
-                  )),
-              SizedBox(height: 100),
-              Text(
-                "Payment Method",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20),
-              Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text(
-                    ' - Cash On Delivery',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  )),
-              SizedBox(height: 200),
-              ElevatedButton(
+          child: Column(children: <Widget>[
+            DateTimePicker(
+              type: DateTimePickerType.date,
+              dateMask: 'yyyy/MM/dd',
+              controller: _dateController,
+              //initialValue: _initialValue,
+              firstDate: DateTime(2000),
+              lastDate: DateTime(2100),
+              icon: Icon(Icons.event),
+              dateLabelText: 'Date',
+              locale: Locale('en', 'US'),
+            ),
+            DateTimePicker(
+              type: DateTimePickerType.time,
+              //timePickerEntryModeInput: true,
+              controller: _timeController,
+              // initialValue: '', //_initialValue,
+              icon: Icon(Icons.access_time),
+              timeLabelText: "Time",
+              use24HourFormat: false,
+              locale: Locale('en', 'US'),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            Text(
+              "Delivery Address",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Container(
+                margin: EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: address,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Address is required";
+                    }
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.place),
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Your Delivery Address",
+                  ),
+                )),
+            SizedBox(height: 100),
+            Text(
+              "Payment Method",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  ' - Cash On Delivery',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                )),
+            SizedBox(height: 200),
+            ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                label: Text(
+                  "Order Now",
+                  style: TextStyle(color: Colors.black),
+                ),
+                icon: Icon(
+                  Icons.delivery_dining,
+                ),
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ));
-                },
-                child: Text('Order Now'),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed("/notification");
-                },
-                child: IconButton(
-                    icon: Icon(
-                      Icons.delivery_dining,
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                  NotificationService.display(
+                      "Order Acknowledgement",
+                      "Your Order is acknowledge, we will contact you soon",
+                      "Your order",
+                      context);
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)),
                     ),
-                    onPressed: () {
-                      NotificationService.display(
-                          "Order Acknowledgement",
-                          "Your Order is acknowledge, we will contact you soon",
-                          "Your order",
-                          context);
-                      Positioned(
-                        top: 12,
-                        right: 12,
-                        child: Container(
-                          height: 10,
-                          width: 10,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
-                        ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                  );
+                }),
+          ]),
         ),
       ),
     );

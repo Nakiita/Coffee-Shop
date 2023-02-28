@@ -1,5 +1,7 @@
 import 'package:coffee_shop/screens/detailscreen.dart';
 import 'package:coffee_shop/screens/forgotPassword.dart';
+import 'package:coffee_shop/screens/helpandsupport.dart';
+import 'package:coffee_shop/screens/option.dart';
 
 import 'package:coffee_shop/services/notification_service.dart';
 import 'package:coffee_shop/screens/order_details.dart';
@@ -47,7 +49,8 @@ class MyApp extends StatelessWidget {
         "/welcomescreen": (BuildContext context) => WelcomeScreen(),
         "/dashboard": (BuildContext context) => HomePage(),
         "/forgotPassword": (BuildContext context) => ForgotPassword(),
-        
+        "/helpandsupport": (BuildContext context) => HelpAndSupport(),
+        "/more": (BuildContext context) => Option(),
       },
     );
   }
